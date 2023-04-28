@@ -13,20 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # AWS CLIをインストールする。キャッシュがある場合は、キャッシュからインストールする。
-      - name: Cache AWS CLI
-        id: cache-aws-cli
-        uses: actions/cache@v2
-        with:
-        path: ~/.local/bin
-        key: ${{ runner.os }}-awscli-${{ hashfiles('**/requirements.txt') }}
-        restore-keys: |
-          //${{ runner.os }}-awscli-
-      # node.jsをインストールする。
-      - name: Install Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
       # npmをインストールし、ビルドする。
       - name: Install and Build
         run: npm install
