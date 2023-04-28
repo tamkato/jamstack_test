@@ -14,8 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # npmをインストールし、ビルドする。
-      - name: Install and Build
+      - name: Install
         run: npm install
+      - name: Install and Build
         run: npm run build
         # S3にデプロイする。
       - name: Deploy
